@@ -153,15 +153,17 @@ export class BaseActions {
 	 * @param locator - The Locator of the element to validate.
 	 * @param expectedText - The expected text content to match against the element.
 	 * @param elementName - Optional name of the element for logging purposes.
+	 * @param timeout - Wait time for element to be visible.
 	 */
 	async validateElementHasText(
 		locator: Locator,
 		expectedText: string,
-		elementName: string
+		elementName: string,
+		timeout: number
 	): Promise<void> {
 		await test.step(`Validate [${elementName}] contains text [${expectedText}]`, async () => {
 			console.log(`Checking if [${elementName}] has text [${expectedText}]`);
-			await expect(locator).toBeVisible({ timeout: 5000 });
+			await this.waitForVisibility(locator, timeout);
 			await expect(locator).toHaveText(expectedText);
 			console.log(
 				`Validation passed: [${elementName}] contains [${expectedText}]`

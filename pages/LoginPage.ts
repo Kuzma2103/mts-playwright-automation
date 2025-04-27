@@ -17,8 +17,8 @@ export class LoginPage extends BasePage {
 	}
 
 	/**
-	 * This method fill the Korisnicko ime field.
-	 * @param korisnickoIme - Korisnicko ime.
+	 * This method fills in the "Korisničko ime" (Username) field.
+	 * @param lozinka - The username to enter.
 	 */
 	async enterKorisnickoIme(korisnickoIme: string): Promise<void> {
 		await this.fillElement(
@@ -29,8 +29,8 @@ export class LoginPage extends BasePage {
 	}
 
 	/**
-	 * This method fill the Lozinka field.
-	 * @param lozinka - Lozinka.
+	 * This method fills in the "Lozinka" (Password) field.
+	 * @param lozinka - The password to enter.
 	 */
 	async enterLozinka(lozinka: string): Promise<void> {
 		await this.fillElement(this.lozinkaField, lozinka, 'Lozinka');
@@ -44,11 +44,10 @@ export class LoginPage extends BasePage {
 	}
 
 	/**
-	 * This method validates the login error messages displayed in the alert box.
+	 * This method validates that the expected login error message is displayed inside the alert box.
 	 */
 	async validateErrorLoginMessages(): Promise<void> {
 		const expectedErrorMessage = errorMessages.invalidUserData;
-
 		// validate alert error message
 		await this.validateElementText(
 			this.alertErrorLoginMessage,

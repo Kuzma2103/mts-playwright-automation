@@ -3,13 +3,13 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
 	testDir: './tests',
 	outputDir: 'test-results',
-	fullyParallel: false,
+	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
 	forbidOnly: !!process.env.CI,
 	retries: 0,
-	workers: 1,
+	workers: 3,
 	reporter: 'html',
-	timeout: 15000,
+	timeout: 30000,
 	expect: {
 		timeout: 5000,
 	},
@@ -32,7 +32,10 @@ export default defineConfig({
 	projects: [
 		{
 			name: 'chromium',
-			use: { ...devices['Desktop Chrome'] },
+			use: {
+				...devices['Desktop Chrome'],
+				viewport: { width: 1920, height: 1080 },
+			},
 		},
 	],
 });

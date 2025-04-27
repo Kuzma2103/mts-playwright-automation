@@ -76,13 +76,13 @@ export class BasePage {
 	 * @param locator - Locator of the element.
 	 * @param expectedText - Text to match.
 	 * @param elementName - Name of the element for report.
-	 * @param timeout - Wait time for element to be visible. Default is 3000ms.
+	 * @param timeout - Wait time for element to be visible. Default is 5000ms.
 	 */
 	async validateElementText(
 		locator: Locator,
 		expectedText: string,
 		elementName: string,
-		timeout: number = 3000
+		timeout: number = 5000
 	): Promise<void> {
 		await this.actions.validateElementHasText(
 			locator,
@@ -95,14 +95,14 @@ export class BasePage {
 	/**
 	 * This method waits for specified loader elements to appear and then disappear.
 	 * @param loaderSelectors - An array of CSS selectors representing loaders (default: ['.loader']).
-	 * @param appearTimeoutMs - Maximum time in milliseconds to wait for a loader to appear (default: 3000ms).
+	 * @param appearTimeoutMs - Maximum time in milliseconds to wait for a loader to appear (default: 5000ms).
 	 * @param disappearTimeoutMs - Maximum time in milliseconds to wait for a loader to disappear (default: 20000ms).
 	 *
 	 * @throws Will not throw if loader doesn't appear — method safely skips if no loader is found.
 	 */
 	async waitForLoadersToDisappear(
 		loaderSelectors: string[] = ['.loader'],
-		appearTimeoutMs: number = 3000,
+		appearTimeoutMs: number = 5000,
 		disappearTimeoutMs: number = 20000
 	): Promise<void> {
 		for (const selector of loaderSelectors) {

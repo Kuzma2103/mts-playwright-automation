@@ -4,6 +4,10 @@ import { Header } from '../pages/Header';
 import { HomePage } from '../pages/HomePage';
 import { PageObjectManager } from '../managers/PageObjectManager';
 
+/**
+ * Helper class for user login actions and validations.
+ * Encapsulates all steps needed to perform login and handle login-related flows.
+ */
 export class LoginHelper {
 	readonly pageManager: PageObjectManager;
 	readonly homePage: HomePage;
